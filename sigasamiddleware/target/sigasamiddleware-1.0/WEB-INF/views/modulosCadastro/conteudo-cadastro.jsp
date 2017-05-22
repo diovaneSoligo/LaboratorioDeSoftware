@@ -20,49 +20,49 @@
 
                 <div class="form-group">
                     <div class="col-sm-11">
-                        <input type="text" class="form-control" placeholder="Nome" name="nome" style="text-align: center;font-size: x-large;" required>
+                        <input type="text" class="form-control" placeholder="Nome" name="nome" style="text-align: center;" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-11">
-                        <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome" style="text-align: center;font-size: x-large;" required>
+                        <input type="text" class="form-control" placeholder="Sobrenome" name="sobrenome" style="text-align: center;" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-11">
-                        <input type="email" class="form-control" placeholder="E-mail" name="email" style="text-align: center;font-size: x-large;" required>
+                        <input type="email" class="form-control" placeholder="E-mail" name="email" style="text-align: center;" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-11">
-                        <input type="text" class="form-control" placeholder="RG" id="RG" name="rg" style="text-align: center;font-size: x-large;" required>
+                        <input type="text" class="form-control" placeholder="RG" id="RG" name="rg" style="text-align: center;" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-11">
-                        <input type="text" class="form-control" placeholder="CPF" id="CPF" name="cpf" style="text-align: center;font-size: x-large;" required>
+                        <input type="text" class="form-control" placeholder="CPF" id="CPF" name="cpf" style="text-align: center;" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-11">
-                        <input type="text" class="form-control" id="nascimento" placeholder="Data de nascimento" name="nascimento" style="text-align: center;font-size: x-large;" required>
+                        <input type="text" class="form-control" id="nascimento" placeholder="Data de nascimento" name="nascimento" style="text-align: center;" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-11">
-                        <input type="text" class="form-control" placeholder="Nome de usuário" id="user" name="usuario" style="text-align: center;font-size: x-large;" required>
+                        <input type="text" class="form-control" placeholder="Nome de usuário" id="user" name="usuario" style="text-align: center;" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-11">
-                        <input type="password" class="form-control" placeholder="Senha" name="senha" style="text-align: center;font-size: x-large;" required>
+                        <input type="password" class="form-control" placeholder="Senha" name="senha" style="text-align: center;" required>
                     </div>
                 </div>
 

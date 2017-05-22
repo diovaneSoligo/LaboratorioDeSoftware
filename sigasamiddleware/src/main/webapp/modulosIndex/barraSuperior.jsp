@@ -6,7 +6,7 @@
             transform:rotateZ(0);
         }
         25%{
-            transform:rotateZ(10deg);
+            transform:rotateZ(1deg);
             //-webkit-transform: scale(1.3);
             //-ms-transform: scale(1.3);
             //transform: scale(1.3);
@@ -15,7 +15,7 @@
             transform:rotateZ(0);
         }
         75%{
-            transform:rotateZ(-10deg);
+            transform:rotateZ(-1deg);
         }
         100%{
             transform:rotateZ(0);
@@ -29,7 +29,7 @@
         animation-delay: .2s;
         animation-duration: .5s;
         animation-timing-function: linear;
-        animation-iteration-count: 2;
+        animation-iteration-count: infinite;
 
     }
     .estilo{
@@ -45,16 +45,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h3>
+                <h3 style="font-size: 60px;">
                     <img src="img/favicon2.png" alt="" class="imagemBarra"/>
                     SIGASA</h3>
             </div>
             <div class="col-md-6" style="text-align: center">
-                <h5 style="padding-top: 2%">Esqueceu seus dados de acesso? 
+                <h6 style="">Esqueceu seus dados de acesso? 
                     <a data-toggle="modal" data-target="#myModal" style="cursor:pointer;color:white">
                         <div class="mexe"><span class="glyphicon glyphicon-hand-right"></span> CLIQUE AQUI</div>
                     </a>
-                </h5>
+                </h6>
             </div>
         </div>
     </div>

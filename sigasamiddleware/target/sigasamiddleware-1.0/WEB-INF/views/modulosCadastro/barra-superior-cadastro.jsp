@@ -6,7 +6,7 @@
             transform:rotateZ(0);
         }
         25%{
-            transform:rotateZ(10deg);
+            transform:rotateZ(1deg);
             //-webkit-transform: scale(1.3);
             //-ms-transform: scale(1.3);
             //transform: scale(1.3);
@@ -15,7 +15,7 @@
             transform:rotateZ(0);
         }
         75%{
-            transform:rotateZ(-10deg);
+            transform:rotateZ(-1deg);
         }
         100%{
             transform:rotateZ(0);
@@ -29,7 +29,7 @@
         animation-delay: .2s;
         animation-duration: .5s;
         animation-timing-function: linear;
-        animation-iteration-count: 2;
+        animation-iteration-count: infinite;
 
     }
     .estilo{
