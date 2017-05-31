@@ -21,8 +21,8 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import modelo.DadosUsuario;
-import modelo.RecuperaEmail;
+import br.modelo.DadosUsuario;
+import br.modelo.RecuperaEmail;
 import org.apache.commons.codec.binary.Base64;
 
 /**

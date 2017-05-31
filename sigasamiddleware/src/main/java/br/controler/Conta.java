@@ -5,6 +5,7 @@
  */
 package br.controler;
 
+import br.dao.DaoSistema;
 import br.dao.DaoUsuario;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -13,8 +14,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import modelo.DadosUsuario;
-import modelo.RecuperaEmail;
+import br.modelo.DadosUsuario;
+import br.modelo.RecuperaEmail;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,56 @@ import org.springframework.web.servlet.ModelAndView;
 public class Conta {
 
     boolean cad = false;
+
+    /**/
+ /* MENU MINHA CONTA altera dados   */
+    @RequestMapping("altera_dados_")
+    public ModelAndView PaginaMinhaContaAlteraDados(HttpSession session, DadosUsuario dados)  throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        System.out.println("...chamou a página Minha Conta Altera Dados.\nDados enviado:");
+        System.out.println("USUARIO: " + dados.getUsuario());
+        System.out.println("E-MAIL: " + dados.getEmail());
+        System.out.println("NOVA SENHA: " + dados.getSenha_nova());
+        System.out.println("SENHA: " + dados.getSenha());
+
+        if (session.getAttribute("usuarioLogado") == null) {
+            System.out.println("sessão nula, retorna para página inicial...");
+            ModelAndView mv = new ModelAndView("../../index");
+            mv.addObject("notificacaoERRO", "Efetue o login. Obrigado!");
+            return mv;
+        }
+        ModelAndView mv = new ModelAndView("sistema/minha_conta");
+
+        //verifica senha
+        if (DaoSistema.verificaSenha(dados.getSenha())) {
+            //verifica se contem alguma senha nova
+
+            if (dados.getSenha_nova() == "") {//se for nulo (não tiver nenhuma string) altera somente usuario e email
+                System.out.println("Não existe senha nova... Alterando usuário e e-mail...");
+                if (DaoSistema.alteraUsuarioEmail(dados)) {
+                    mv.addObject("mensagem", "Dados alterados e salvos com sucesso! <span class=\"mdi mdi-emoticon\"></span>");
+                } else {
+                    mv.addObject("erro", "ALGO DE ERRADO OCOREU! <span class=\"mdi mdi-emoticon-dead\"></span>");
+                }
+            } else {//se não altera usuario, email e altera a nova senha
+                System.out.println("Existe senha nova... Alterando usuário, e-mail e senha...");
+                if (DaoSistema.alteraUsuarioEmailSenha(dados)) {
+                    mv.addObject("mensagem", "Dados alterados e salvos com sucesso! <span class=\"mdi mdi-emoticon\"></span>");
+                } else {
+                    mv.addObject("erro", "ALGO DE ERRADO OCOREU! <span class=\"mdi mdi-emoticon-dead\"></span>");
+                }
+            }
+
+        } else {
+            mv.addObject("erro", "A senha não confere! <span class=\"mdi mdi-emoticon-sad\"></span>");
+        }
+
+        System.out.println("...ABRINDO página");
+
+        mv.addObject("dados_usuario", new DaoSistema().dadosUsuario());
+        mv.addObject("nome_pagina", "SIGASA > <span class=\"mdi mdi-account-settings-variant\"></span> Minha Conta");
+
+        return mv;
+    }
 
     /**
      * *************************************************************
@@ -57,11 +108,6 @@ public class Conta {
 
         return "forward:retornaERROEmail";
 
-        //verificar se existe e-mail
-        //mandar e-mail
-        //se email enviado, cria cookie 
-        //a parti do email acessa um link q abre só se ouver o cookie ainda ativo
-        //colocar aqui código para buscar e-mail e mandar 
     }
 
     @RequestMapping("retornaERROEmail")
@@ -189,17 +235,17 @@ public class Conta {
                 System.out.println("NÃO");
                 System.out.println("INICIANDO SESSÃO E DIRECIONANDO PARA PAGINA PRINCIPAL DO SISTEMA...");
                 session.setAttribute("usuarioLogado", DaoUsuario.logar(dadosDeAcesso));
-                return "forward:home";
+                return "forward:home1";
             }
         }
 
         System.out.println("OPS!!! usuário inválido");
         return "forward:retornaERRoLogin";//retorna pra pagina de login sem mensagem
     }
-
-    @RequestMapping("home")
+    
+    @RequestMapping("home1")
     public ModelAndView PáginaInicialDoSistema(HttpSession session) {
-        System.out.println("...chamou a página HOME.");
+        System.out.println("...chamou 1 a página HOME.");
 
         if (session.getAttribute("usuarioLogado") == null) {
             System.out.println("sessão nula, retorna para página inicial...");
@@ -208,7 +254,11 @@ public class Conta {
             return mv;
         }
         System.out.println("...ABRINDO página");
+        
         ModelAndView mv = new ModelAndView("sistema/inicial");
+        mv.addObject("dados_usuario", new DaoSistema().dadosUsuario());
+        mv.addObject("ola", new DaoSistema().dadosUsuario());
+        mv.addObject("nome_pagina", "SIGASA > <span class=\"mdi mdi-home\"></span> inicío");
 
         return mv;
     }
@@ -236,6 +286,18 @@ public class Conta {
         }
         mv = new ModelAndView("../../index");
         return mv;
+    }
+
+    /**
+     * **********************************************************************
+     */
+    //LOGOUT
+    @RequestMapping("logout")
+    public String logout(HttpSession session) {
+        System.out.println("CHAMOU LOGOUT... session.invalidate()");
+        session.invalidate();
+        System.out.println("invalidou a sessao");
+        return "../../index";
     }
 
     /**

@@ -1,4 +1,9 @@
 br\controler\Conta.class
-br\dao\DaoUsuario.class
-modelo\DadosUsuario.class
+br\dao\DaoUsuario$1.class
+br\modelo\RecuperaEmail.class
 br\conectaBD\Conexao.class
+br\dao\DaoUsuario.class
+br\controler\Menus.class
+br\modelo\FileBean.class
+br\dao\DaoSistema.class
+br\modelo\DadosUsuario.class
