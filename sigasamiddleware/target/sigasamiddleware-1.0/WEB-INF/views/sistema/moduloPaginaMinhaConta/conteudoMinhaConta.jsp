@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4" style="border-right: #c8c8c8 2px solid;">
                 <!-- dados pessoais do usuário -->
-                <h3 style="text-align: center">Dados pessoais</h3>
+                <h3 style="text-align: center">Dados pessoais do domínio</h3>
                 <ul class="demo-list-icon mdl-list">
                     <li class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">
