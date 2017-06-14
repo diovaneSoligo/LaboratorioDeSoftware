@@ -194,7 +194,7 @@
 .inputfile-6 + label {
     border: 1px solid #d3394c;
     background-color: #f1e5e6;
-  /*  padding: 0;*/
+    padding: 0;
 }
 
 .inputfile-6:focus + label,

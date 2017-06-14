@@ -51,9 +51,9 @@
         </style>
 
         <script>
-            window.onload = bem_vindo;
+            window.onload = toast;
             
-            function bem_vindo() {
+            function toast() {
                 // Get the snackbar DIV
                 var x = document.getElementById("snackbar");
 

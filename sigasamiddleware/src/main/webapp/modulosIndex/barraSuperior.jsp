@@ -50,46 +50,8 @@
                     SIGASA</h3>
             </div>
             <div class="col-md-6" style="text-align: center">
-                <h6 style="">Esqueceu seus dados de acesso? 
-                    <a data-toggle="modal" data-target="#myModal" style="cursor:pointer;color:white">
-                        <div class="mexe"><span class="glyphicon glyphicon-hand-right"></span> CLIQUE AQUI</div>
-                    </a>
-                </h6>
+                Versão 1.0
             </div>
         </div>
     </div>
 </div>  
-<!-- Modal para recuperação de conta-->
-<div id="myModal" class="modal fade" role="dialog" style="    top: 10%;">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content modalCor" style="background-color: rgb(49, 58, 78);color: white;">
-            <div class="modal-header">
-                <h4 class="modal-title" style="text-align: center"><span class="glyphicon glyphicon-envelope"></span> Recuperação de acesso ao sistema SIGASA</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <img src="img/favicon2.png" alt="" style="width: 85%;margin-left: 20px;margin-top: 15%;"/>
-                    </div>
-                    <div class="col-md-6">
-                        <p align="justify">Olá, Caso você já tenha realizado o cadastro no sistema mas esqueceu
-                            seus dados de acesso, poderá recuperar-los via e-mail, o mesmo no qual você cadastrou no sistema.</p>
-                        <p align="justify">Ao clicar em RECUPERAR, um e-mail será enviado ao seu e-mail cadastrado contendo
-                            os passos que você deverá seguir para recuperar seus dados de acesso!</p>
-                        <hr>
-                        <h6><span class="glyphicon glyphicon-question-sign"></span> Dúvidas: <a href="mailto:diovane.soligo92@gmail.com">suporte@sigasa.com</a></h6>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <form id="form" method="post" action="recuperarContaDeAcesso">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
-                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-envelope"></span> RECUPERAR</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-

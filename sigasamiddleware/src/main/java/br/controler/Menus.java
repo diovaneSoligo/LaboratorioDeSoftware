@@ -7,7 +7,6 @@ package br.controler;
 
 import br.dao.DaoSistema;
 import javax.servlet.http.HttpSession;
-import br.modelo.DadosUsuario;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,6 +20,13 @@ public class Menus {
 
     /**/
  /*  MENU INICIO  */
+
+    /**
+     *
+     * @param session
+     * @return 
+     */
+
     @RequestMapping("home")
     public ModelAndView PáginaInicialDoSistema(HttpSession session) {
         System.out.println("...chamou a página HOME.");
@@ -42,6 +48,13 @@ public class Menus {
 
     /**/
  /*  MENU ADM DRIVER  */
+
+    /**
+     *
+     * @param session
+     * @return 
+     */
+
     @RequestMapping("administrar_driver")
     public ModelAndView PaginaAdmDriver(HttpSession session) {
         System.out.println("...chamou a página ADMINISTRAR DRIVE.");
@@ -62,6 +75,13 @@ public class Menus {
 
     /**/
  /*  MENU VISUALIZAR DRIVER  */
+
+    /**
+     *
+     * @param session
+     * @return 
+     */
+
     @RequestMapping("visualizar_driver")
     public ModelAndView PaginaIniciaVisualizaDriver(HttpSession session) {
         System.out.println("...chamou a página Visualizar DRIVE.");
@@ -81,6 +101,13 @@ public class Menus {
 
     /**/
  /* MENU MINHA CONTA  */
+
+    /**
+     *
+     * @param session
+     * @return 
+     */
+
     @RequestMapping("minha_conta")
     public ModelAndView PaginaMinhaConta(HttpSession session) {
         System.out.println("...chamou a página Minha Conta.");

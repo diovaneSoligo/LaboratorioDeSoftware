@@ -23,7 +23,13 @@
 	clear: both;
 }
 
-
+body {
+	font-family: Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+	color: #4b0f31;
+	background-color: #f1e5e6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
 
 a {
 	outline: none;
@@ -157,7 +163,7 @@ a:focus {
 .content footer a:focus {
 	color: #4b0f31;
 }
-/*
+
 .box {
 	background-color: #dfc8ca;
 	padding: 6.25rem 1.25rem;
@@ -166,7 +172,7 @@ a:focus {
 .box + .box {
 	margin-top: 2.5rem;
 }
-*/
+
 
 /* Related demos */
 

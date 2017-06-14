@@ -16,6 +16,8 @@
 
         <%@include file="modulosPrincipais/munu_lateral.jsp" %>   
 
+        <%@include file="modulosPrincipais/alerts.jsp" %>
+        
         <%@include file="moduloPaginaAdmDriver/conteudoAdmDriver.jsp" %>
         
         <%@include file="modulosPrincipais/ola_usuario.jsp" %>

@@ -1,13 +1,16 @@
+
+
 <div style="margin-right: 5%;margin-left: 5%;margin-top: 1%;border-bottom: 4px #d3394c solid;border-top: 4px #d3394c solid;">
     <div class="row" style="">
         <h6>
             <span class="mdi mdi-24px mdi-comment-alert-outline"></span>
-            Selecione o driver "nome_do_driver.jar" e logo após clique em INSTALAR
+            QUER INSTALAR UM DRIVER?<br>Selecione o driver "NOME_DO_DRIVER.ZIP", coloque o nome do driver e logo após clique em INSTALAR
         </h6>
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form method="POST" action="up_driver" enctype="multipart/form-data">
             <div class="col-md-8">
-                <input accept=".jar" style="display: none" type="file" name="file-7[]" id="file-7" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
-                <label for="file-7">
+                <!-- accept=".jar" -->
+                <input accept=".zip" style="display: none" type="file" name="arquivo" id="file" class="inputfile inputfile-6" required />
+                <label for="file">
                     <span></span>
                     <strong>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17">
@@ -16,7 +19,6 @@
                     </strong>
                 </label>
             </div>
-
             <div class="col-md-3">
                 <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
                     <span class="mdi mdi-watch-import"></span>
@@ -35,7 +37,6 @@
                         <table class="table table-hover" >
                             <thead>
                                 <tr>
-                                    <th>STATUS</th>
                                     <th>NOME DO DRIVER</th>
                                     <th>FABRICANTE</th>
                                     <th style="text-align: center">Desativar/Ativar</th>
@@ -44,19 +45,14 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td id="status1"><span class="mdi mdi-24px mdi-sync-off"></span></td>
-                                    <div class="mdl-tooltip" data-mdl-for="status1">
-                                        Driver desativado :)
-                                    </div>
-
                                     <td style="cursor: default" id="EE1">EFICIENCIA ENERGETICA</td>
                                     <div class="mdl-tooltip" data-mdl-for="EE1">
-                                        Monitoramento de energia elétrica dos equipamentos presentes na residência
+                                        Nome do driver: EFICIENCIA ENERGETICA
                                     </div>
 
                                     <td style="cursor: default" id="EEF1">UFSM-CPOL-DS</td>
                                     <div class="mdl-tooltip" data-mdl-for="EEF1">
-                                        Fabricante:<br>Universidade Federal de Santa Maria - Colégio Politécnico - Diovane Soligo
+                                        Fabricante:
                                     </div>
 
                                     <th>
@@ -76,28 +72,23 @@
                                     </div>
                                 </tr>
                                 <tr>
-                                    <td id="status4"><span class="mdi mdi-spin mdi-24px mdi-sync"></span></td>
-                                    <div class="mdl-tooltip" data-mdl-for="status4">
-                                        <span class="mdi mdi-emoticon-cool"></span> Tudo OK
-                                    </div>
-                                    
                                     <td style="cursor: default" id="EE4">ALARME</td>
                                     <div class="mdl-tooltip" data-mdl-for="EE4">
-                                        Monitoramento do alarme
+                                        Nome do driver: ALARME
                                     </div>
 
                                     <td style="cursor: default" id="EEF4">Alarmes e CIA</td>
                                     <div class="mdl-tooltip" data-mdl-for="EEF4">
-                                        Fabricante:<br>Alarmes e CIA
+                                        Fabricante:
                                     </div>
-                                    
+
                                     <th>
                                         <label style="margin-left: 40%;" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-4">
                                             <input type="checkbox" id="switch-4" class="mdl-switch__input" checked>
                                                 <span class="mdl-switch__label"></span>
                                         </label>
                                     </th>
-                                    
+
                                     <td style="cursor: pointer;text-align: center">
                                         <button  id="del4" style="background: #d3394c;color: rgb(249, 248, 248);" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                             <i class="material-icons">delete</i>
@@ -108,28 +99,23 @@
                                     </div>
                                 </tr>
                                 <tr>
-                                    <td id="status2"><span class="mdi mdi-24px mdi-sync-alert"></span></td>
-                                    <div class="mdl-tooltip" data-mdl-for="status2">
-                                        <span class="mdi mdi-alert"></span> Algo não está certo
-                                    </div>
-                                    
                                     <td style="cursor: default" id="EE2">TEMPERATURA RESIDENCIAL</td>
                                     <div class="mdl-tooltip" data-mdl-for="EE2">
-                                        Monitoramento de Temperatura Residencial
+                                        Nome do driver: 
                                     </div>
 
                                     <td style="cursor: default" id="EEF2">UFSM-CPOL-DS</td>
                                     <div class="mdl-tooltip" data-mdl-for="EEF2">
-                                        Fabricante:<br>Universidade Federal de Santa Maria - Colégio Politécnico - Diovane Soligo
+                                        Fabricante:
                                     </div>
-                                    
+
                                     <th>
                                         <label style="margin-left: 40%;" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
                                             <input type="checkbox" id="switch-2" class="mdl-switch__input" checked>
                                                 <span class="mdl-switch__label"></span>
                                         </label>
                                     </th>
-                                    
+
                                     <td style="cursor: pointer;text-align: center">
                                         <button  id="del2" style="background: #d3394c;color: rgb(249, 248, 248);" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                             <i class="material-icons">delete</i>
@@ -140,28 +126,23 @@
                                     </div>
                                 </tr>
                                 <tr>
-                                    <td id="status3"><span class="mdi mdi-spin mdi-24px mdi-sync"></span></td>
-                                    <div class="mdl-tooltip" data-mdl-for="status3">
-                                        <span class="mdi mdi-emoticon-cool"></span> Tudo OK
-                                    </div>
-                                    
                                     <td style="cursor: default" id="EE3">HUMIDADE</td>
                                     <div class="mdl-tooltip" data-mdl-for="EE3">
-                                        Monitoramento da humidade residencial
+                                        Nome do driver:
                                     </div>
 
                                     <td style="cursor: default" id="EEF3">UFSM-CPOL-DS</td>
                                     <div class="mdl-tooltip" data-mdl-for="EEF3">
-                                        Fabricante:<br>Universidade Federal de Santa Maria - Colégio Politécnico - Diovane Soligo
+                                        Fabricante:
                                     </div>
-                                    
+
                                     <th>
                                         <label style="margin-left: 40%;" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-3">
                                             <input type="checkbox" id="switch-3" class="mdl-switch__input" checked>
                                                 <span class="mdl-switch__label"></span>
                                         </label>
                                     </th>
-                                    
+
                                     <td style="cursor: pointer;text-align: center">
                                         <button  id="del3" style="background: #d3394c;color: rgb(249, 248, 248);" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
                                             <i class="material-icons">delete</i>
@@ -171,7 +152,7 @@
                                         Deletar Driver HUMIDADE ?
                                     </div>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                     </div>
