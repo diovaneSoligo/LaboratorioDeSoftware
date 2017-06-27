@@ -41,6 +41,7 @@ public class Menus {
 
         ModelAndView mv = new ModelAndView("sistema/inicial");
         mv.addObject("dados_usuario", new DaoSistema().dadosUsuario());
+        mv.addObject("drivers_com_sensores_reconhecos",DaoDriver.buscaDriversSensoresIdentificados());
         mv.addObject("nome_pagina", "SIGASA > <span class=\"mdi mdi-home\"></span> inicío");
 
         return mv;

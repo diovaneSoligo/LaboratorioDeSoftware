@@ -30,7 +30,7 @@ public class DaoDriver {
             c = Conexao.getConexao();
             String sql = "";
             sql = "insert into drivers"
-                    + "(nomeDriver,descricao,fabricante,pack,uri,nomeJar,nomePacote,nomeClasse)"
+                    + "(nomeDriver,descricao,fabricante,versao,uri,nomeJar,nomePacote,nomeClasse)"
                     + "values"
                     + "(?,?,?,?,?,?,?,?);";
             stmt = c.prepareStatement(sql);
@@ -173,13 +173,39 @@ public class DaoDriver {
         }
     }
 
+    public static Object buscaDriversSensoresIdentificados() {
+        ArrayList<Driver> drivers = new ArrayList<Driver>();
+
+        try {
+            System.out.println("Buscando dados de drivers que possuem sensores ativos...");
+            Connection c = Conexao.getConexao();//Faz conexão com banco
+            PreparedStatement stmt = c.prepareStatement("select distinct count(drivers.iddriver) as sensores ,drivers.iddriver as iddriver, nomedriver from sensores , drivers where drivers.iddriver = sensores.iddriver group by drivers.iddriver;");
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Driver d = new Driver();
+                d.setSensoresReconhecidos(rs.getInt("sensores"));
+                d.setID(rs.getInt("iddriver"));
+                d.setNomeDriver(rs.getString("nomedriver"));
+                drivers.add(d);
+            }
+            System.out.println("tudo OK ");
+
+        } catch (Exception e) {
+            System.out.println("CATCH em public Object buscaDriversSensoresIdentificados() ...");
+            e.printStackTrace();
+        }
+        return drivers;
+    }
+
     public Object listaDrivers() {
         ArrayList<Driver> drivers = new ArrayList<Driver>();
 
         try {
             System.out.println("Buscando dados de drivers no banco...");
             Connection c = Conexao.getConexao();//Faz conexão com banco
-            PreparedStatement stmt = c.prepareStatement("select iddriver,nomedriver,descricao,fabricante,pack from drivers;");
+            PreparedStatement stmt = c.prepareStatement("select iddriver,nomedriver,descricao,fabricante,versao from drivers;");
 
             ResultSet rs = stmt.executeQuery();
 
@@ -189,7 +215,7 @@ public class DaoDriver {
                 d.setNomeDriver(rs.getString("nomedriver"));
                 d.setDescricaoDriver(rs.getString("descricao"));
                 d.setFabricanteDriver(rs.getString("fabricante"));
-                d.setPackDriver(rs.getString("pack"));
+                d.setPackDriver(rs.getString("versao"));
                 drivers.add(d);
             }
             System.out.println("tudo OK ... retornando a lista com drivers cadastrados no banco");

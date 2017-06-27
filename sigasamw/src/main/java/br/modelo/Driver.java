@@ -13,6 +13,7 @@ import java.util.List;
  * @author Diovane
  */
 public class Driver {
+    private int sensoresReconhecidos;
     private int ID;
     private File URIDriver;
     private String nomeJarDriver;
@@ -21,8 +22,16 @@ public class Driver {
     private String nomeDriver;
     private String descricaoDriver;
     private String fabricanteDriver;
-    private String packDriver;
+    private String versaoDriver;
     private List<String> sensores;//(ID) ; (IP)
+
+    public int getSensoresReconhecidos() {
+        return sensoresReconhecidos;
+    }
+
+    public void setSensoresReconhecidos(int sensoresReconhecidos) {
+        this.sensoresReconhecidos = sensoresReconhecidos;
+    }
 
     public int getID() {
         return ID;
@@ -89,11 +98,11 @@ public class Driver {
     }
 
     public String getPackDriver() {
-        return packDriver;
+        return versaoDriver;
     }
 
-    public void setPackDriver(String packDriver) {
-        this.packDriver = packDriver;
+    public void setPackDriver(String versaoDriver) {
+        this.versaoDriver = versaoDriver;
     }
 
     public List<String> getSensores() {

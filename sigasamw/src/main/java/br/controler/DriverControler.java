@@ -46,7 +46,6 @@ public class DriverControler {
 
                     //Acrescenta o novo jar no Classpath do sistema
                     //Com_driver.adicionarAoClasspath(CaminhoJAR);
-
                     //lista no log as classes presentes no novo .jar
                     Com_driver.getClasseNamesInPackage(CaminhoJAR);
 
@@ -119,20 +118,47 @@ public class DriverControler {
             mv.addObject("notificacaoERRO", "Efetue o login. Obrigado!");
             return mv;
         }
-        ModelAndView mv = new ModelAndView("sistema/adm_driver");
+        ModelAndView mv = new ModelAndView("sistema/visualizar_driver");
 
         //loader class . invocar metodo get sensores e armazenar os mesmos no banco . retornar quantos encontrados
         int total = Com_driver.buscaAtualizaSensores(id.getID());//id do driver
 
         if (total != 0) {
-            mv.addObject("notificacaoOK", "Atualização concluída, < " + total + " > sensores localizados");
+            mv.addObject("notificacaoOK", "<h4>Atualização concluída, < " + total + " > sensore(s) localizados</h4>");
         } else {
             mv.addObject("notificacaoERRO", "Nenhum Sensor encontrado :(");
         }
 
         System.out.println("Voltando para página...");
+        mv.addObject("dados_driver", DaoDriver.buscaDadosAtualizarSensores(id.getID()));
+        mv.addObject("lista_sensores", new DaoDriver().listaSensores(id.getID()));
         mv.addObject("dados_usuario", new DaoSistema().dadosUsuario());
-        mv.addObject("nome_pagina", "SIGASA > <span class=\"mdi-24px mdi mdi-watch-import\"></span> Administrar Drivers");
+        mv.addObject("nome_pagina", "SIGASA > <span class=\"mdi-24px mdi mdi-watch-import\"></span> Administrar Drivers / Ver Drivers");
+        
+        return mv;
+    }
+
+    @RequestMapping(value = "/invokeSensor", method = RequestMethod.POST)
+    public ModelAndView invokeSensor(HttpSession session, Sensor id) throws IOException {
+        System.out.println("Chamou invokeSensor ID do sensor: " + id.getIdSensor());
+        /* verifica se usuario logado */
+        if (session.getAttribute("usuarioLogado") == null) {
+            System.out.println("sessão nula, retorna para página inicial...");
+            ModelAndView mv = new ModelAndView("../../index");
+            mv.addObject("notificacaoERRO", "Efetue o login. Obrigado!");
+            return mv;
+        }
+        ModelAndView mv = new ModelAndView("sistema/visualizar_driver");
+
+        //invocar, retornar o resultado do invoke, e id do driver do driver para buscar os dados pra página
+        Sensor s = Com_driver.invocarSensor(id.getIdSensor());
+
+        System.out.println("Voltando para página...");
+        mv.addObject("notificacaoOK", "<h4 style=\"color: blue;\"> Retorno do sensor < " + s.getIdSensor() + " > IP: < " + s.getIpSensor() + " ></h4><h3 style=\"color: #000;\">" + s.getRetornoDados() + " <span class=\"mdi mdi-keyboard-return\" style=\"color: blue;\"></span></h3>");
+        mv.addObject("dados_driver", DaoDriver.buscaDadosAtualizarSensores(s.getID()));
+        mv.addObject("lista_sensores", new DaoDriver().listaSensores(s.getID()));
+        mv.addObject("dados_usuario", new DaoSistema().dadosUsuario());
+        mv.addObject("nome_pagina", "SIGASA > <span class=\"mdi-24px mdi mdi-watch-import\"></span> Administrar Drivers / Ver Drivers");
         mv.addObject("drivers_modulos", new DaoDriver().listaDrivers());
         return mv;
     }
@@ -154,31 +180,6 @@ public class DriverControler {
         mv.addObject("lista_sensores", new DaoDriver().listaSensores(id.getID()));
         mv.addObject("dados_usuario", new DaoSistema().dadosUsuario());
         mv.addObject("nome_pagina", "SIGASA > <span class=\"mdi-24px mdi mdi-watch-import\"></span> Administrar Drivers / Ver Drivers");
-        return mv;
-    }
-
-    @RequestMapping(value = "/invokeSensor", method = RequestMethod.POST)
-    public ModelAndView invokeSensor(HttpSession session, Sensor id) throws IOException {
-        System.out.println("Chamou invokeSensor ID do sensor: " + id.getIdSensor());
-        /* verifica se usuario logado */
-        if (session.getAttribute("usuarioLogado") == null) {
-            System.out.println("sessão nula, retorna para página inicial...");
-            ModelAndView mv = new ModelAndView("../../index");
-            mv.addObject("notificacaoERRO", "Efetue o login. Obrigado!");
-            return mv;
-        }
-        ModelAndView mv = new ModelAndView("sistema/visualizar_driver");
-
-        //invocar, retornar o resultado do invoke, e id do driver do driver para buscar os dados pra página
-        Sensor s = Com_driver.invocarSensor(id.getIdSensor());
-
-        System.out.println("Voltando para página...");
-        mv.addObject("notificacaoOK", "<p> Retorno do sensor < " + s.getIdSensor() + " > IP: < " + s.getIpSensor() + " ><br>" + s.getRetornoDados() + "</p>");
-        mv.addObject("dados_driver", DaoDriver.buscaDadosAtualizarSensores(s.getID()));
-        mv.addObject("lista_sensores", new DaoDriver().listaSensores(s.getID()));
-        mv.addObject("dados_usuario", new DaoSistema().dadosUsuario());
-        mv.addObject("nome_pagina", "SIGASA > <span class=\"mdi-24px mdi mdi-watch-import\"></span> Administrar Drivers / Ver Drivers");
-        mv.addObject("drivers_modulos", new DaoDriver().listaDrivers());
         return mv;
     }
 

@@ -4,7 +4,7 @@
     <div class="row" style="">
         <h6>
             <span class="mdi mdi-24px mdi-comment-alert-outline"></span>
-            QUER INSTALAR UM DRIVER / MÓDULO?<br>Selecione o "NOME_EXEMPLO_DRIVER.JAR", e logo após clique em INSTALAR
+            QUER INSTALAR UM DRIVER?<br>Selecione o "NOME.JAR", e logo após clique em INSTALAR
         </h6>
         <form method="POST" action="up_driver" enctype="multipart/form-data">
             <div class="col-md-8">
@@ -30,7 +30,6 @@
 </div>
 <br><br>
         <form method="post" action="ver_sensores_driver" id="ver"></form>
-        <form method="post" action="atualizar_sensores_driver" id="atualizar"></form>
         <form method="post" action="deletar_driver" id="deletar"></form>
         <h4 style="text-align: center"><span class="mdi mdi-chemical-weapon"></span> Drivers Instalados <span class="mdl-badge" data-badge="${drivers_modulos.size()}"></span></h4>
         <br>
@@ -40,11 +39,11 @@
                         <table class="table table-hover" >
                             <thead>
                                 <tr>
-                                    <th style="text-align: center">NOME DO DRIVER/MÓDULO</th>
+                                    <th style="text-align: center">NOME DO DRIVER</th>
                                     <th style="text-align: center">FABRICANTE</th>
-                                    <th style="text-align: center">Pack/Versão</th>
+                                    <th style="text-align: center">VERSÃO</th>
                                     <th style="text-align: center">VER SENSORES</th>
-                                    <th style="text-align: center">ATUALIZAR SENSORES</th>
+                                    <!--<th style="text-align: center">ATUALIZAR SENSORES</th>-->
                                     <th style="text-align: center">DELETAR</th>
                                 </tr>
                             </thead>
@@ -59,8 +58,8 @@
 
                                         <!-- fabricante -->
                                         <td style="cursor: default;text-align: center">${x.fabricanteDriver}</td>
-
-                                        <!-- pack/versao -->
+                                        
+                                        <!-- versao -->
                                         <td style="cursor: default;text-align: center">${x.packDriver}</td>
 
                                         <!-- ver sensores -->
@@ -70,17 +69,7 @@
                                             </button>
                                         </td>
                                         <div class="mdl-tooltip" data-mdl-for="sensores${x.ID}">
-                                            <p>VISUALIZAR SENSORES IDENTIFICADOS NA REDE</p>
-                                        </div>
-
-                                        <!-- atualizar sensores -->
-                                        <td style="cursor: pointer;text-align: center">
-                                            <button form="atualizar" name="ID" value="${x.ID}" id="atualizar${x.ID}" style="background: #6f66b5;color: rgb(249, 248, 248);" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
-                                                <i class="material-icons">cached</i>
-                                            </button>
-                                        </td>
-                                        <div class="mdl-tooltip" data-mdl-for="atualizar${x.ID}">
-                                            <p>ATUALIZAR/BUSCAR SENSORES NA REDE!</p>
+                                            <p>VISUALIZAR SENSORES DE <br> < ${x.nomeDriver} ></p>
                                         </div>
 
                                         <!-- deletar driver/modulo -->
@@ -90,7 +79,7 @@
                                             </button>
                                         </td>
                                         <div class="mdl-tooltip" data-mdl-for="deletar${x.ID}">
-                                            <p>DELETAR ${x.nomeDriver} ?</p>
+                                            <p>DELETAR <br> ${x.nomeDriver} ?</p>
                                         </div>
                                     </tr>
                                 </c:forEach>

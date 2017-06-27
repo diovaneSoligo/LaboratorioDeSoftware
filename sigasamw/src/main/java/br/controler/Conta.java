@@ -6,6 +6,7 @@
 package br.controler;
 
 import br.com_driver.Com_driver;
+import br.dao.DaoDriver;
 import br.dao.DaoSistema;
 import br.dao.DaoUsuario;
 import java.io.UnsupportedEncodingException;
@@ -288,6 +289,7 @@ public class Conta {
         ModelAndView mv = new ModelAndView("sistema/inicial");
         mv.addObject("dados_usuario", new DaoSistema().dadosUsuario());
         mv.addObject("ola", new DaoSistema().dadosUsuario());
+        mv.addObject("drivers_com_sensores_reconhecos",DaoDriver.buscaDriversSensoresIdentificados());
         mv.addObject("nome_pagina", "SIGASA > <span class=\"mdi mdi-home\"></span> inicío");
 
         return mv;

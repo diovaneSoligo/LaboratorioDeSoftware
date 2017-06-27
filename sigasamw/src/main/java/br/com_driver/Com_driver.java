@@ -182,7 +182,7 @@ public class Com_driver {
                 armazena.setDescricaoDriver((String) Method.invoke(Instance));
                 Method = userList.getMethod("getFabricante");
                 armazena.setFabricanteDriver((String) Method.invoke(Instance));
-                Method = userList.getMethod("getPack");
+                Method = userList.getMethod("getVersao");
                 armazena.setPackDriver((String) Method.invoke(Instance));
 
                 /*
@@ -201,7 +201,7 @@ public class Com_driver {
                 System.out.println("Nome Driver: " + armazena.getNomeDriver() + "\n");
                 System.out.println("Descrição: " + armazena.getDescricaoDriver() + "\n");
                 System.out.println("Fabricante: " + armazena.getFabricanteDriver() + "\n");
-                System.out.println("Pack (versão): " + armazena.getPackDriver() + "\n");
+                System.out.println("Versão: " + armazena.getPackDriver() + "\n");
 
                 System.out.println("URI Driver: " + armazena.getURIDriver());
                 System.out.println("Nome do JAR: " + armazena.getNomeJarDriver());
